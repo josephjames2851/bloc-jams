@@ -28,6 +28,21 @@ var albumMarconi = {
      ]
 };
 
+var albumDavis = {
+    title: 'Kind of Blue',
+    artist: 'Miles Davis',
+    label: 'Columbia',
+    year: '1959',
+    albumArtUrl: 'assets/images/album_covers/04.png',
+    songs: [
+        { title: 'So What', duration: '9:07' },
+        { title: 'Freddie Freeloader', duration: '9:48' },
+        { title: 'Blue in Green', duration: '5:35' },
+        { title: 'All Blues', duration: '11:32' },
+        { title: 'Flamenco Sketches', duration: '9:27' }
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template = 
         '<tr class="album-view-song-item">'
@@ -39,13 +54,13 @@ var createSongRow = function(songNumber, songName, songLength) {
     return template;
 };
 
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
 var setCurrentAlbum = function(album) {
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
-    
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -60,4 +75,19 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+    
+    var albums = [albumPicasso, albumMarconi, albumDavis];
+    var index = 1;
+    albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(albums[index]);
+        index++;
+
+        if(index == albums.length) {
+            index = 0;
+        }
+    });
 };
+
+// Click on the album cover art to toggle the next album
+
+
