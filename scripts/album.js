@@ -43,6 +43,8 @@ var albumDavis = {
     ]
 };
 
+var albums = [albumPicasso, albumMarconi, albumDavis];
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template = 
         '<tr class="album-view-song-item">'
@@ -53,6 +55,8 @@ var createSongRow = function(songNumber, songName, songLength) {
     
     return template;
 };
+
+var currentAlbumIndex = 0;
 
 var albumTitle = document.getElementsByClassName('album-view-title')[0];
 var albumArtist = document.getElementsByClassName('album-view-artist')[0];
@@ -73,19 +77,19 @@ var setCurrentAlbum = function(album) {
     }
 };
 
-window.onload = function() {
-    setCurrentAlbum(albumPicasso);
-    
-    var albums = [albumPicasso, albumMarconi, albumDavis];
-    var index = 1;
-    albumImage.addEventListener("click", function(event) {
-        setCurrentAlbum(albums[index]);
-        index++;
+var albumSwitcher = function() {
+    currentAlbumIndex++;
 
-        if(index == albums.length) {
-            index = 0;
-        }
-    });
+    if(currentAlbumIndex == albums.length) {
+        currentAlbumIndex = 0;
+    }
+
+    setCurrentAlbum(albums[currentAlbumIndex]);
+};
+
+window.onload = function() {
+    setCurrentAlbum(albums[currentAlbumIndex]);
+    albumImage.addEventListener("click", albumSwitcher);
 };
 
 // Click on the album cover art to toggle the next album
