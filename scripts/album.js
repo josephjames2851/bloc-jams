@@ -105,6 +105,4 @@ window.onload = function() {
     });
 };
 
-// Click on the album cover art to toggle the next album
-
 
