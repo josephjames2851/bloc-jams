@@ -11,7 +11,7 @@ body.album {
     position: relative;
     left: 20%;
     margin-top: 1rem;
-    width: 60%;    
+    width: 60%;
 }
 
 .album-view-details {
@@ -40,7 +40,6 @@ body.album {
     margin: 1.5rem auto;
     font-weight: 300;
     font-size: 0.75em;
-    border-collapse: collapse;
 }
 
 .album-view-song-item {
@@ -49,7 +48,7 @@ body.album {
 }
 
 .song-item-number {
-    width: 5%; /* 5% of what container? */
+    width: 5%;
     min-width: 30px;
 }
 
@@ -82,17 +81,21 @@ body.album {
     line-height: 28px;
 }
 
-@media (max-width: 640px) and (min-width: 320px) {
+.album-song-button .fa-play {
+    padding-left: 5px;
+}
+
+@media (max-width: 40rem) and (min-width: 20rem) {
     .album-view-details {
         text-align: center;
     }
     
     .album-view-title {
-        margin-top: 0;
+        margin-top: 0;   
     }
 }
 
-@media (max-width: 1024px) and (min-width: 320px) {
+@media (max-width: 64rem) and (min-width: 20rem) {
     .album-view-song-list {
         position: relative;
         top: 1rem;
